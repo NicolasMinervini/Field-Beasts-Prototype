@@ -1,11 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Pointer : Player
 {
     public Camera cam;
     public GameObject groundIndicator;
+    public Transform cameraPos;
 
     public float raycastDistance = 999f;
     public LayerMask rayHitLayers;
@@ -24,10 +26,14 @@ public class Pointer : Player
 
     public TMP_Text debugSelectedAbilityName, debugSelectedUnit;
 
+    bool isMouseOverUI = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //isYourTurn = true;
+
+        if (cameraPos == null) cameraPos = transform;
 
         if(cam == null)
         {
@@ -51,6 +57,8 @@ public class Pointer : Player
         pointerPixelEdgeCutoffX = Screen.width * pointerPercentEdgeCutoff;
         pointerPixelEdgeCutoffY = Screen.height * pointerPercentEdgeCutoff;
 
+        isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
+
         bool isOnScreen =
             mousePos.x > pointerPixelEdgeCutoffX
             && mousePos.x < Screen.width - pointerPixelEdgeCutoffX
@@ -59,7 +67,7 @@ public class Pointer : Player
             && Application.isFocused;
 
         //clicking to select and deselect units
-        if(isOnScreen && Mouse.current.leftButton.wasPressedThisFrame && Physics.Raycast(pointerRay, out hit, raycastDistance, rayHitLayers))
+        if(isOnScreen && isMouseOverUI == false && Mouse.current.leftButton.wasPressedThisFrame && Physics.Raycast(pointerRay, out hit, raycastDistance, rayHitLayers))
         {
             Unit clickedUnit;
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class JumpAction : Action
@@ -27,6 +28,8 @@ public class JumpAction : Action
     {
         if (unit == null) { return; }
 
+        isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
+
         range = unit.moveSpeedRemaining;
         
         //visual indicators and HUD stuff
@@ -49,6 +52,7 @@ public class JumpAction : Action
 
         //jump when the player right clicks a valid position within range
         if (Mouse.current.rightButton.wasPressedThisFrame
+            && isMouseOverUI == false
             && IsValidTargetPosition(externalHit.point)
             && (GetMovementCost(externalHit.point) <= range)
             && IsWithinJumpRange(externalHit.point))

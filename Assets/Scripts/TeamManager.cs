@@ -88,6 +88,7 @@ public class TeamManager : MonoBehaviour
         if(teamPointer != null)
         {
             teamPointer.isYourTurn = false;
+            teamPointer.DeselectUnit();
         }
     }
 }

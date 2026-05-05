@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
+    public Camera cam;
+
     public LineRenderer navline;
     public TMP_Text pathStatus;
     public TMP_Text pathLength;
@@ -13,8 +15,12 @@ public class TurnManager : MonoBehaviour
 
     public TeamManager[] teams;
 
+    bool gameComplete = false;
+
     void Start()
     {
+        if (cam == null) cam = Camera.main;
+
         foreach(TeamManager t in teams)
         {
             t.navline = navline;
@@ -31,17 +37,25 @@ public class TurnManager : MonoBehaviour
 
     public void EndTurn()
     {
+        if (gameComplete) return;
+
+        Debug.Log(teams[currentTurn].teamName + " ended their turn.");
+
         int nextTeam = currentTurn + 1;
         if (nextTeam >= teams.Length) nextTeam = 0;
 
         while(teams[nextTeam].units.Count <= 0)
         {
+            Debug.Log("Skipping team " + teams[nextTeam].teamName + " because they have no units.");
+
             nextTeam += 1;
             if (nextTeam >= teams.Length) nextTeam = 0;
 
             if(nextTeam == currentTurn)
             {
                 //we have cycled through the full team list. This either means the team that just ended its turn is the winner, or that everyone loses
+
+                Debug.Log("Game is ready to conclude!");
 
                 if(teams[currentTurn].units.Count <= 0)
                 {
@@ -69,6 +83,19 @@ public class TurnManager : MonoBehaviour
 
     public void StartTurn()
     {
+        if (gameComplete) return;
+
+        Debug.Log("Starting " + teams[currentTurn].teamName + "'s turn.");
+
+        //for multiplayer. Move camera to currently active player pointer
+        if(teams[currentTurn].teamPointer != null)
+        {
+            cam.transform.parent = teams[currentTurn].teamPointer.cameraPos;
+            cam.transform.localPosition = Vector3.zero;
+            cam.transform.localScale = Vector3.one;
+            cam.transform.localEulerAngles = Vector3.zero;
+        }
+
         teams[currentTurn].StartTurn();
 
         if(currentTurnText != null)
@@ -80,7 +107,18 @@ public class TurnManager : MonoBehaviour
 
     public void EndGame(TeamManager winner)
     {
-        if(winner != null)
+        //prevent any players from moving shit around after the game ends.
+        gameComplete = true;
+        foreach (TeamManager t in teams)
+        {
+            if(t != null && t.teamPointer != null)
+            {
+                t.teamPointer.isYourTurn = false;
+            }
+        }
+
+        
+        if (winner != null)
         {
             //display the winning team's victory
 

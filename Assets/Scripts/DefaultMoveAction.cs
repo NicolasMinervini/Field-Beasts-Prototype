@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class DefaultMoveAction : Action
@@ -24,6 +25,8 @@ public class DefaultMoveAction : Action
     {
         if (unit == null) { return; }
 
+        isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
+
         range = unit.moveSpeedRemaining;
         ShowRangeRing(externalHit.point);
 
@@ -32,7 +35,7 @@ public class DefaultMoveAction : Action
 
         hit = externalHit;
 
-        if (Mouse.current.rightButton.wasPressedThisFrame)
+        if (Mouse.current.rightButton.wasPressedThisFrame && isMouseOverUI == false)
         {
             DoAction();
         }

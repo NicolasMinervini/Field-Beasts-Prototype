@@ -17,6 +17,9 @@ public class Action : MonoBehaviour
 
     public List<Vector3> navLinePositions = new List<Vector3>();
 
+    [HideInInspector]
+    public bool isMouseOverUI = false;
+
     public virtual void Start()
     {
         if(unit == null)
