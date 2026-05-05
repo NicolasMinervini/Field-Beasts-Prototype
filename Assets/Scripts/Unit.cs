@@ -31,7 +31,7 @@ public class Unit : MonoBehaviour
     //Unit action stuff
     public int actionsPerTurn = 1;
     public int actionsRemaining = 1;
-    public Action defaultAction;
+    public Action defaultAction, jumpAction;
     public Action[] actions;
 
     public GameObject rangeRing;
@@ -215,6 +215,9 @@ public class Unit : MonoBehaviour
         
         if(navline != null)
         {
+            navline.startColor = Color.white;
+            navline.endColor = Color.white;
+
             navline.enabled = true;
             navline.positionCount = positions.Count;
             navline.SetPositions(positions.ToArray());

@@ -90,6 +90,26 @@ public class Action : MonoBehaviour
         unit.rangeRing.transform.localScale = Vector3.one * GetFunctionalRange(pointerPos);
     }
 
+    //draws a line from the unit to its target. Makes the line red if the target is out of range
+    public virtual void ShowAimLine(Vector3 targetPosition, float lineVerticalOffset = 0.5f)
+    {
+        if (unit.navline == null) return;
+
+        unit.navline.SetPositions(new Vector3[2]);
+        unit.navline.SetPosition(0, new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + lineVerticalOffset, unit.gameObject.transform.position.z));
+        targetPosition.y += lineVerticalOffset;
+        unit.navline.SetPosition(1, targetPosition);
+
+        if (IsInRange(targetPosition))
+        {
+            unit.navline.endColor = Color.white;
+        }
+        else
+        {
+            unit.navline.endColor = Color.red;
+        }
+    }
+
     //Gets the actual range of this action against a target position, accounting for range changes due to height
     public virtual float GetFunctionalRange(Vector3 targetPosition)
     {

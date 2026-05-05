@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class DefaultMoveAction : Action
@@ -37,10 +35,6 @@ public class DefaultMoveAction : Action
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             DoAction();
-            if (unit.unitPointer != null)
-            {
-                unit.unitPointer.selectedAction = null;
-            }
         }
     }
 
