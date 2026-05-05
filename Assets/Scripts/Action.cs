@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Action : MonoBehaviour
@@ -13,6 +14,8 @@ public class Action : MonoBehaviour
     public bool heightDisadvantageRangeDebuff = false;
     public bool heightAdvantageRangeBuff = true;
     public float rangeChangePerUnitHeight = 1;
+
+    public List<Vector3> navLinePositions = new List<Vector3>();
 
     public virtual void Start()
     {
@@ -95,10 +98,11 @@ public class Action : MonoBehaviour
     {
         if (unit.navline == null) return;
 
-        unit.navline.SetPositions(new Vector3[2]);
-        unit.navline.SetPosition(0, new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + lineVerticalOffset, unit.gameObject.transform.position.z));
-        targetPosition.y += lineVerticalOffset;
-        unit.navline.SetPosition(1, targetPosition);
+        navLinePositions.Clear();
+        navLinePositions.Add(new Vector3(unit.transform.position.x, unit.transform.position.y + lineVerticalOffset, unit.transform.position.z));
+        navLinePositions.Add(new Vector3(targetPosition.x, targetPosition.y + lineVerticalOffset, targetPosition.z));
+        unit.navline.positionCount = navLinePositions.Count;
+        unit.navline.SetPositions(navLinePositions.ToArray());
 
         if (IsInRange(targetPosition))
         {

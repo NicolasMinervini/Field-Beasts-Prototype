@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -68,10 +69,10 @@ public class JumpAction : Action
     //Calculates the potential cost of moving from the current height to the targeted height. Positive value means extra cost (moving upwards), negative value means bonus distance (moving down)
     public float GetHeightCost(Vector3 targetPosition)
     {
-        float targetToUnitHeight = Mathf.Round(unit.transform.position.y - targetPosition.y);
-        if ((targetToUnitHeight > 0 && heightAdvantageRangeBuff) || (targetToUnitHeight < 0 && heightDisadvantageRangeDebuff))
+        float unitToTargetHeight = Mathf.Round(targetPosition.y - unit.transform.position.y);
+        if ((unitToTargetHeight < 0 && heightAdvantageRangeBuff) || (unitToTargetHeight > 0 && heightDisadvantageRangeDebuff))
         {
-            return (targetToUnitHeight * rangeChangePerUnitHeight);
+            return (unitToTargetHeight * rangeChangePerUnitHeight);
         }
         return 0;
     }
@@ -102,11 +103,13 @@ public class JumpAction : Action
     {
         if (unit.navline == null) return;
 
-        unit.navline.SetPositions(new Vector3[2]);
-        unit.navline.SetPosition(0, new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + lineVerticalOffset, unit.gameObject.transform.position.z));
-        targetPosition.y += lineVerticalOffset;
-        unit.navline.SetPosition(1, targetPosition);
-
+        //nav line stuff
+        navLinePositions.Clear();
+        navLinePositions.Add(new Vector3(unit.transform.position.x, unit.transform.position.y + lineVerticalOffset, unit.transform.position.z));
+        navLinePositions.Add(new Vector3(targetPosition.x, targetPosition.y + lineVerticalOffset, targetPosition.z));
+        unit.navline.positionCount = navLinePositions.Count;
+        unit.navline.SetPositions(navLinePositions.ToArray());
+        
         if (IsInRange(targetPosition) && IsWithinJumpRange(targetPosition))
         {
             unit.navline.endColor = Color.white;

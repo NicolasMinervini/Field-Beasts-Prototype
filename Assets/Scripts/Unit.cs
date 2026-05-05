@@ -8,12 +8,13 @@ public class Unit : MonoBehaviour
     public NavMeshAgent agent;
     public Vector3 moveTarget;
     public Pointer unitPointer;
+    public TeamManager teamManager;
     
     [HideInInspector]
     public NavMeshPath targetPath;
-
+    [HideInInspector]
     public LineRenderer navline;
-
+    [HideInInspector]
     public TMP_Text pathStatus, pathLength;
 
     //0 = NPC
@@ -73,6 +74,7 @@ public class Unit : MonoBehaviour
         actionsRemaining = actionsPerTurn;
     }
 
+    //remove all of this unit's remaining movement speed and actions when its turn is ended
     public void EndTurn()
     {
         agent.isStopped = true;
@@ -117,6 +119,10 @@ public class Unit : MonoBehaviour
     }
     public void Die()
     {
+        if(teamManager != null)
+        {
+            teamManager.RemoveUnit(this);
+        }
         Destroy(gameObject);
     }
 

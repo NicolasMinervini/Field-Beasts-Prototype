@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,10 @@ public class Pointer : Player
     public Unit selectedUnit;
     public Action selectedAction;
 
+    public bool movementKeyboardShortcuts = true;
+
+    public TMP_Text debugSelectedAbilityName, debugSelectedUnit;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +38,9 @@ public class Pointer : Player
     // Update is called once per frame
     void Update()
     {
+        //Actually, we don't want this pointer to be doing anything outside of its turn in the two-player prototype
+        if (!isYourTurn) return;
+
         // ********* Mouse position and information *********
 
         mousePos = Mouse.current.position.ReadValue();
@@ -77,6 +85,11 @@ public class Pointer : Player
                 {
                     //It is this player's turn, they are allowed to command their own units
 
+                    if (movementKeyboardShortcuts)
+                    {
+                        MovementShortcuts();
+                    }
+
                     //Prepare action
                     if (isOnScreen && Physics.Raycast(pointerRay, out hit, raycastDistance, rayHitLayers))
                     {
@@ -104,6 +117,8 @@ public class Pointer : Player
                 {
                     //it is not this player's turn
 
+                    DeselectAction();
+
                     groundIndicator.SetActive(false);
                 }
             }
@@ -111,14 +126,28 @@ public class Pointer : Player
             {
                 //player is selecting a unit they do not own
 
+                DeselectAction();
+
                 groundIndicator.SetActive(false);
             }
         }
+        else
+        {
+            //player isn't selecting a unit
+
+            DeselectUnit();
+
+            groundIndicator.SetActive(false);
+        }
+
+        DisplaySelectedAction();
+        DisplaySelectedUnit();
     }
 
     public void SelectUnit(Unit clickedUnit)
     {
         DeselectUnit();
+        clickedUnit.unitPointer = this;
         groundIndicator.SetActive(true);
         selectedUnit = clickedUnit;
     }
@@ -126,6 +155,10 @@ public class Pointer : Player
     public void DeselectUnit()
     {
         groundIndicator.SetActive(false);
+        if(selectedUnit != null)
+        {
+            selectedUnit.unitPointer = null;
+        }
         selectedUnit = null;
         DeselectAction();
     }
@@ -137,5 +170,48 @@ public class Pointer : Player
             selectedAction.Deselect();
         }
         selectedAction = null;
+    }
+
+    public void MovementShortcuts()
+    {
+        if (selectedUnit == null) return;
+
+        if (Keyboard.current.zKey.wasPressedThisFrame)
+        {
+            //shortcut to default (movement) action
+            selectedAction = selectedUnit.defaultAction;
+        }
+        else if (Keyboard.current.xKey.wasPressedThisFrame)
+        {
+            //shortcut to jump action
+            selectedAction = selectedUnit.jumpAction;
+        }
+    }
+
+    public void DisplaySelectedAction()
+    {
+        if (debugSelectedAbilityName == null) return;
+
+        if(selectedAction == null)
+        {
+            debugSelectedAbilityName.text = "";
+        }
+        else
+        {
+            debugSelectedAbilityName.text = "Selected action: " + selectedAction.actionName;
+        }
+    }
+    public void DisplaySelectedUnit()
+    {
+        if (debugSelectedUnit == null) return;
+
+        if(selectedUnit == null)
+        {
+            debugSelectedUnit.text = "";
+        }
+        else
+        {
+            debugSelectedUnit.text = "Selected Unit: " + selectedUnit.name;
+        }
     }
 }
