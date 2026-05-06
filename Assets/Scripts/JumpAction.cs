@@ -12,6 +12,9 @@ public class JumpAction : Action
 
     public float maxHorizontalJumpDistance = 5f;
 
+    //an additional movement cost to any jump, so that it isn't objectively better than just walking
+    public float flatAdditionalMovementCost = 1f;
+
     public override void PrepareAction()
     {
         if (unit == null) { return; }
@@ -38,7 +41,7 @@ public class JumpAction : Action
 
         if (IsValidTargetPosition(externalHit.point))
         {
-            if (unit.pathLength != null) unit.pathLength.text = "Distance: " + GetMovementCost(externalHit.point) + " m";
+            if (unit.pathLength != null) unit.pathLength.text = "Movement cost: " + GetMovementCost(externalHit.point) + " m";
             
             if (unit.pathStatus != null)
             {
@@ -54,7 +57,7 @@ public class JumpAction : Action
         }
         else
         {
-            if (unit.pathLength != null) unit.pathLength.text = "Distance: " + GetMovementCost(externalHit.point) + " m";
+            if (unit.pathLength != null) unit.pathLength.text = "Movement cost: " + GetMovementCost(externalHit.point) + " m";
             if (unit.pathStatus != null) unit.pathLength.text = "Invalid target position!";
         }
 
@@ -93,7 +96,7 @@ public class JumpAction : Action
     //Returns the calculated cost to move to a target position
     public float GetMovementCost(Vector3 targetPosition)
     {
-        return GetHorizontalDistance(targetPosition) + GetHeightCost(targetPosition);
+        return GetHorizontalDistance(targetPosition) + GetHeightCost(targetPosition) + flatAdditionalMovementCost;
     }
 
     //checks if the targeted position is on the navmesh

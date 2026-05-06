@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class BasicAttackAction : Action
+public class BasicStatusAction : Action
 {
     RaycastHit hit;
     Ray ray;
@@ -11,16 +10,14 @@ public class BasicAttackAction : Action
     public LayerMask rayHitLayers;
     Unit hitUnit;
 
-    public GameObject hitEffect;
+    public GameObject useEffect;
 
-    //x value is minimum damage, y value is maximum. This attack deals a random amount between the two inclusively
-    public Vector2 damage;
+    public int actionAddition = 0;
+    public float movementModifier = 1f;
 
     public override void Start()
     {
         base.Start();
-
-        actionDescription = "Deal " + (int)damage.x + " - " + (int)damage.y + " damage to a target.";
     }
 
     public override void PrepareAction()
@@ -37,13 +34,11 @@ public class BasicAttackAction : Action
     {
         if (unit == null) { return; }
 
-        actionDescription = "Deal " + (int)damage.x + " - " + (int)damage.y + " damage to a target.";
-
         isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
 
         //check if the raycast hit a unit
         hitUnit = null;
-        if(externalHit.collider.gameObject.TryGetComponent<Unit>(out hitUnit) && unit.actionsRemaining > 0)
+        if (externalHit.collider.gameObject.TryGetComponent<Unit>(out hitUnit) && unit.actionsRemaining > 0)
         {
             //visual indicators and HUD stuff
             ShowRangeRing(hitUnit.transform.position);
@@ -68,7 +63,7 @@ public class BasicAttackAction : Action
                 DoAction();
             }
         }
-        else if(unit.actionsRemaining > 0)
+        else if (unit.actionsRemaining > 0)
         {
             //the ray is not hitting a unit but the action can still be used
 
@@ -85,11 +80,18 @@ public class BasicAttackAction : Action
 
     public override void DoAction()
     {
-        hitUnit.Hurt(Random.Range((int)damage.x, (int)(damage.y + 1)));
-
-        if(hitEffect != null)
+        if (actionAddition != 0)
         {
-            Instantiate(hitEffect, hitUnit.transform.position, Quaternion.identity);
+            hitUnit.AddActionModifier(actionAddition);
+        }
+        if (movementModifier != 1)
+        {
+            hitUnit.AddMoveSpeedModifier(movementModifier);
+        }
+
+        if (useEffect != null)
+        {
+            Instantiate(useEffect, hitUnit.transform.position, Quaternion.identity);
         }
 
         unit.actionsRemaining -= 1;

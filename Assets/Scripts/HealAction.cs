@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class BasicAttackAction : Action
+public class HealAction : Action
 {
     RaycastHit hit;
     Ray ray;
@@ -11,16 +10,16 @@ public class BasicAttackAction : Action
     public LayerMask rayHitLayers;
     Unit hitUnit;
 
-    public GameObject hitEffect;
+    public GameObject healEffect;
 
-    //x value is minimum damage, y value is maximum. This attack deals a random amount between the two inclusively
-    public Vector2 damage;
+    //x value is minimum amount, y value is maximum. This action heals a random amount between the two inclusively
+    public Vector2 healAmount;
 
     public override void Start()
     {
         base.Start();
 
-        actionDescription = "Deal " + (int)damage.x + " - " + (int)damage.y + " damage to a target.";
+        actionDescription = "Restore " + (int)healAmount.x + " - " + (int)healAmount.y + " health of a target.";
     }
 
     public override void PrepareAction()
@@ -37,13 +36,13 @@ public class BasicAttackAction : Action
     {
         if (unit == null) { return; }
 
-        actionDescription = "Deal " + (int)damage.x + " - " + (int)damage.y + " damage to a target.";
+        actionDescription = "Restore " + (int)healAmount.x + " - " + (int)healAmount.y + " health of a target.";
 
         isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
 
         //check if the raycast hit a unit
         hitUnit = null;
-        if(externalHit.collider.gameObject.TryGetComponent<Unit>(out hitUnit) && unit.actionsRemaining > 0)
+        if (externalHit.collider.gameObject.TryGetComponent<Unit>(out hitUnit) && unit.actionsRemaining > 0)
         {
             //visual indicators and HUD stuff
             ShowRangeRing(hitUnit.transform.position);
@@ -68,7 +67,7 @@ public class BasicAttackAction : Action
                 DoAction();
             }
         }
-        else if(unit.actionsRemaining > 0)
+        else if (unit.actionsRemaining > 0)
         {
             //the ray is not hitting a unit but the action can still be used
 
@@ -85,11 +84,11 @@ public class BasicAttackAction : Action
 
     public override void DoAction()
     {
-        hitUnit.Hurt(Random.Range((int)damage.x, (int)(damage.y + 1)));
+        hitUnit.Heal(Random.Range((int)healAmount.x, (int)(healAmount.y + 1)));
 
-        if(hitEffect != null)
+        if (healEffect != null)
         {
-            Instantiate(hitEffect, hitUnit.transform.position, Quaternion.identity);
+            Instantiate(healEffect, hitUnit.transform.position, Quaternion.identity);
         }
 
         unit.actionsRemaining -= 1;

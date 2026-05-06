@@ -98,7 +98,7 @@ public class Pointer : Player
 
                     if (movementKeyboardShortcuts)
                     {
-                        MovementShortcuts();
+                        ActionShortcuts();
                     }
 
                     //Prepare action
@@ -183,7 +183,7 @@ public class Pointer : Player
         selectedAction = null;
     }
 
-    public void MovementShortcuts()
+    public void ActionShortcuts()
     {
         if (selectedUnit == null) return;
 
@@ -196,6 +196,16 @@ public class Pointer : Player
         {
             //shortcut to jump action
             SelectJumpAction();
+        }
+        else if (Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            //shortcut to action 1
+            SelectFirstAction();
+        }
+        else if (Keyboard.current.vKey.wasPressedThisFrame)
+        {
+            //shortcut to action 2
+            SelectSecondAction();
         }
     }
 

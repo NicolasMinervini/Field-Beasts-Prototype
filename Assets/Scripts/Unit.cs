@@ -45,6 +45,16 @@ public class Unit : MonoBehaviour
     [HideInInspector]
     public float pathDistance = 0;
 
+    //percentage value move speed remaining will be multiplied by
+    float nextTurnMoveSpeedModifier = 1f;
+    //integer value added to actions remaining
+    int nextTurnActionAddition = 0;
+
+    //this is primarily used for modifiers. Modifiers apply immediately if it is this unit's turn, but will wait before applying if it isn't
+    bool isYourturn = false;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -77,8 +87,14 @@ public class Unit : MonoBehaviour
     //Unit regains its movement and action at the start of its turn
     public void ResetTurn()
     {
-        moveSpeedRemaining = moveSpeed;
-        actionsRemaining = actionsPerTurn;
+        moveSpeedRemaining = moveSpeed * nextTurnMoveSpeedModifier;
+        actionsRemaining = actionsPerTurn + nextTurnActionAddition;
+
+        //reset next-turn modifiers
+        nextTurnMoveSpeedModifier = 1f;
+        nextTurnActionAddition = 0;
+
+        isYourturn = true;
     }
 
     //remove all of this unit's remaining movement speed and actions when its turn is ended
@@ -87,6 +103,8 @@ public class Unit : MonoBehaviour
         agent.isStopped = true;
         moveSpeedRemaining = 0;
         actionsRemaining = 0;
+
+        isYourturn = false;
     }
 
     //move the player to a destination. moveSpeedCostOverride can be set to give a set amount to reduce the unit's remaining move speed irregardless of the destination's path distance 
@@ -119,6 +137,8 @@ public class Unit : MonoBehaviour
             return;
         }
 
+        Debug.Log(gameObject.name + " was healed for " + amount + " hitpoints!");
+
         health = Mathf.Min(health + amount, maxHealth);
     }
     public void Hurt(float amount)
@@ -128,6 +148,8 @@ public class Unit : MonoBehaviour
             Hurt(Mathf.Abs(amount));
             return;
         }
+
+        Debug.Log(gameObject.name + " was hurt for " + amount + " hitpoints!");
 
         if (hurtEffect != null)
         {
@@ -290,6 +312,35 @@ public class Unit : MonoBehaviour
         }
 
         return dist;
+    }
+
+    public void AddMoveSpeedModifier(float percentModifier)
+    {
+        if (isYourturn)
+        {
+            //if it is this unit's turn to act, movement modifiers are immediately applied to the current remaining movement
+            moveSpeedRemaining *= percentModifier;
+            Debug.Log("Adding a " + percentModifier + " modifier to " + gameObject.name + "'s current movement");
+        }
+        else
+        {
+            nextTurnMoveSpeedModifier *= percentModifier;
+            Debug.Log("Adding a " + percentModifier + " modifier to " + gameObject.name + "'s movement next turn");
+        }
+    }
+    public void AddActionModifier(int additionalActions)
+    {
+        if (isYourturn)
+        {
+            //if it is this unit's turn to act, immediately apply the modifier to remaining actions
+            actionsRemaining += additionalActions;
+            Debug.Log("Changing " + gameObject.name + "'s currently available actions by " + additionalActions);
+        }
+        else
+        {
+            nextTurnActionAddition += additionalActions;
+            Debug.Log("Changing " + gameObject.name + "'s available actions next turn by " + additionalActions);
+        }
     }
 
     public bool IsSameTeam(int otherTeam)

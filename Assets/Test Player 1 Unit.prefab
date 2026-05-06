@@ -193,6 +193,11 @@ GameObject:
   - component: {fileID: 5864908047763864400}
   - component: {fileID: 1147438904190617184}
   - component: {fileID: 8853742654304471669}
+  - component: {fileID: 1460571244022073585}
+  - component: {fileID: 3655334609452632281}
+  - component: {fileID: 7441692070984196972}
+  - component: {fileID: 5227427355883969828}
+  - component: {fileID: 7958455285539168395}
   - component: {fileID: 7971099840781119082}
   - component: {fileID: 7333525369596915046}
   m_Layer: 0
@@ -217,6 +222,7 @@ Transform:
   m_Children:
   - {fileID: 3449443417896333955}
   - {fileID: 4392412598360205429}
+  - {fileID: 747965511639341540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1803043873452243477
@@ -250,7 +256,7 @@ MonoBehaviour:
   jumpAction: {fileID: 1147438904190617184}
   actions:
   - {fileID: 8853742654304471669}
-  - {fileID: 1147438904190617184}
+  - {fileID: 5227427355883969828}
   rangeRing: {fileID: 8496270818375162803}
   rangeRingVerticalOffset: 0.1
   pathDistance: 0
@@ -310,6 +316,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   maxHorizontalJumpDistance: 5
+  flatAdditionalMovementCost: 1
 --- !u!114 &8853742654304471669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +334,7 @@ MonoBehaviour:
   actionDescription: Deal 1 - 6 damage to a target.
   targetType: 1
   unit: {fileID: 1803043873452243477}
-  range: 5
+  range: 4
   heightDisadvantageRangeDebuff: 0
   heightAdvantageRangeBuff: 1
   rangeChangePerUnitHeight: 1.5
@@ -339,6 +346,155 @@ MonoBehaviour:
     m_Bits: 1
   hitEffect: {fileID: 7757779262279891833, guid: 249f96efb231ab44bb7d94c394356e89, type: 3}
   damage: {x: 1, y: 6}
+--- !u!114 &1460571244022073585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75aa4dc4d0b8bb4a93103b3263d2469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealAction
+  actionSprite: {fileID: 21300000, guid: 24cf14cca019f1942a0badf688ca3f5a, type: 3}
+  actionName: Heal
+  actionDescription: Restore a target's health by a small amount.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 5
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  healEffect: {fileID: 212326706009544113, guid: b46ecc90441d83644b106617f9ce7a33, type: 3}
+  healAmount: {x: 1, y: 4}
+--- !u!114 &3655334609452632281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3712984e2440a40885dfe3c8e53c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicStatusAction
+  actionSprite: {fileID: 21300000, guid: c8d79622eaabb3b46b91fd5d23b82eb1, type: 3}
+  actionName: War Cry
+  actionDescription: Grant a target an extra action on their current or next turn.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 10
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  useEffect: {fileID: 1351423235528268496, guid: 08e88c046eb7dcd49aad047231914b9a, type: 3}
+  actionAddition: 1
+  movementModifier: 1
+--- !u!114 &7441692070984196972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3712984e2440a40885dfe3c8e53c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicStatusAction
+  actionSprite: {fileID: 21300000, guid: b0df992b93e74664b9cd5bc6e0905f0f, type: 3}
+  actionName: Rush
+  actionDescription: Double a target's movement speed on their current or next turn.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 5
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  useEffect: {fileID: 1351423235528268496, guid: 08e88c046eb7dcd49aad047231914b9a, type: 3}
+  actionAddition: 0
+  movementModifier: 2
+--- !u!114 &5227427355883969828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3712984e2440a40885dfe3c8e53c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicStatusAction
+  actionSprite: {fileID: 21300000, guid: 7c024224163fff444956e788a5b42cca, type: 3}
+  actionName: Mud Sling
+  actionDescription: Halve a target's movement speed on their current or next turn
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 10
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  useEffect: {fileID: 6511364156482765953, guid: a503a0ad57552fb4eb8b7fa853f77c12, type: 3}
+  actionAddition: 0
+  movementModifier: 0.5
+--- !u!114 &7958455285539168395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a3e84d932c7ba42a98d429787dcd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpAction
+  actionSprite: {fileID: 21300000, guid: de421679343de494a88fe1a8c7620200, type: 3}
+  actionName: Fly
+  actionDescription: Leap up onto raised platforms, ignoring height-based additional
+    movement costs.
+  targetType: 0
+  unit: {fileID: 1803043873452243477}
+  range: 5
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 0
+  rangeChangePerUnitHeight: 1
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  maxHorizontalJumpDistance: 5
+  flatAdditionalMovementCost: 0
 --- !u!195 &7971099840781119082
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -416,3 +572,69 @@ Transform:
   - {fileID: 4226465421316213385}
   m_Father: {fileID: 5535289396251810501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &393723627278877631
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5535289396251810501}
+    m_Modifications:
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263805009166846059, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: unit
+      value: 
+      objectReference: {fileID: 1803043873452243477}
+    - target: {fileID: 5636707292776229813, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_Name
+      value: Overhead Health Display
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+--- !u!4 &747965511639341540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+  m_PrefabInstance: {fileID: 393723627278877631}
+  m_PrefabAsset: {fileID: 0}

@@ -15,6 +15,7 @@ public class Action : MonoBehaviour
     public bool heightAdvantageRangeBuff = true;
     public float rangeChangePerUnitHeight = 1;
 
+    [HideInInspector]
     public List<Vector3> navLinePositions = new List<Vector3>();
 
     [HideInInspector]

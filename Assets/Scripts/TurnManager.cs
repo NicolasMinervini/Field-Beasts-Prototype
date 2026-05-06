@@ -111,9 +111,9 @@ public class TurnManager : MonoBehaviour
         gameComplete = true;
         foreach (TeamManager t in teams)
         {
-            if(t != null && t.teamPointer != null)
+            if(t != null)
             {
-                t.teamPointer.isYourTurn = false;
+                t.EndTurn();
             }
         }
 
