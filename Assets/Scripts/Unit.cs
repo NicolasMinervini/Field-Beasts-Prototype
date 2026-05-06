@@ -17,6 +17,8 @@ public class Unit : MonoBehaviour
     [HideInInspector]
     public TMP_Text pathStatus, pathLength;
 
+    public GameObject hurtEffect;
+
     //0 = NPC
     //1 = Player 1
     //2 = Player 2
@@ -39,6 +41,9 @@ public class Unit : MonoBehaviour
 
     public GameObject rangeRing;
     public float rangeRingVerticalOffset = 0.1f;
+
+    [HideInInspector]
+    public float pathDistance = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -84,11 +89,22 @@ public class Unit : MonoBehaviour
         actionsRemaining = 0;
     }
 
-    public void Move(Vector3 destination)
+    //move the player to a destination. moveSpeedCostOverride can be set to give a set amount to reduce the unit's remaining move speed irregardless of the destination's path distance 
+    public void Move(Vector3 destination, float moveSpeedCostOverride = -1)
     {
         agent.enabled = false;
         transform.position = destination;
         agent.enabled = true;
+
+        if(moveSpeedCostOverride >= 0)
+        {
+            //override the expected movement cost
+            moveSpeedRemaining -= moveSpeedCostOverride;
+        }
+        else
+        {
+            moveSpeedRemaining -= pathDistance;
+        }
     }
 
 
@@ -113,7 +129,13 @@ public class Unit : MonoBehaviour
             return;
         }
 
+        if (hurtEffect != null)
+        {
+            Instantiate(hurtEffect, transform.position, Quaternion.identity);
+        }
+
         health -= amount;
+
         if(health <= 0)
         {
             Die();
@@ -142,12 +164,12 @@ public class Unit : MonoBehaviour
         List<Vector3> positions = new List<Vector3>();
 
         Vector3 previousPosition = transform.position;
-        float pathDistance = 0;
+        pathDistance = 0;
 
         positions.Clear();
         positions.Add(previousPosition);
 
-        //Iterate through each corner on the path to find the final reachable position within the unit's remaining movement distance
+        //Iterate through each corner on the path to find the final reachable position within the unit's remaining movement distance. Returns the final position within movement range.
         foreach(Vector3 corner in path.corners)
         {
             //get the total distance from unit to next corner

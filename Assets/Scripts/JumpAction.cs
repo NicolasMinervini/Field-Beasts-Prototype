@@ -35,16 +35,27 @@ public class JumpAction : Action
         //visual indicators and HUD stuff
         ShowRangeRing(externalHit.point);
         ShowAimLine(externalHit.point);
-        if(unit.pathLength != null)
+
+        if (IsValidTargetPosition(externalHit.point))
         {
-            if (IsValidTargetPosition(externalHit.point))
+            if (unit.pathLength != null) unit.pathLength.text = "Distance: " + GetMovementCost(externalHit.point) + " m";
+            
+            if (unit.pathStatus != null)
             {
-                unit.pathLength.text = "Distance: " + GetMovementCost(externalHit.point) + " m";
+                if (GetMovementCost(externalHit.point) <= range && IsWithinJumpRange(externalHit.point))
+                {
+                    unit.pathStatus.text = "Valid target position";
+                }
+                else
+                {
+                    unit.pathStatus.text = "Target position out of range!";
+                }
             }
-            else
-            {
-                unit.pathLength.text = "Cannot jump to position!";
-            }
+        }
+        else
+        {
+            if (unit.pathLength != null) unit.pathLength.text = "Distance: " + GetMovementCost(externalHit.point) + " m";
+            if (unit.pathStatus != null) unit.pathLength.text = "Invalid target position!";
         }
 
         //need to do this so DoAction can read the raycasthit
@@ -63,9 +74,7 @@ public class JumpAction : Action
 
     public override void DoAction()
     {
-        unit.Move(hit.point);
-
-        //unit.moveSpeedRemaining = GetMovementCost(hit.point);
+        unit.Move(hit.point, GetMovementCost(hit.point));
 
         Deselect();
     }
@@ -116,10 +125,12 @@ public class JumpAction : Action
         
         if (IsInRange(targetPosition) && IsWithinJumpRange(targetPosition))
         {
+            unit.navline.startColor = Color.white;
             unit.navline.endColor = Color.white;
         }
         else
         {
+            unit.navline.startColor = Color.red;
             unit.navline.endColor = Color.red;
         }
     }

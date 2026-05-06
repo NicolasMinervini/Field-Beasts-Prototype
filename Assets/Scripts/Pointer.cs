@@ -305,7 +305,7 @@ public class Pointer : Player
             moveBar.minValue = 0;
             moveBar.maxValue = selectedUnit.moveSpeed;
             moveBar.value = selectedUnit.moveSpeedRemaining;
-            healthText.text = "Move: " + selectedUnit.moveSpeedRemaining + " / " + selectedUnit.moveSpeed;
+            moveText.text = "Move: " + selectedUnit.moveSpeedRemaining + " / " + selectedUnit.moveSpeed;
         }
         else
         {

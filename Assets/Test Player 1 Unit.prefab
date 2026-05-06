@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 1803043873452243477}
   - component: {fileID: 5864908047763864400}
   - component: {fileID: 1147438904190617184}
+  - component: {fileID: 8853742654304471669}
   - component: {fileID: 7971099840781119082}
   - component: {fileID: 7333525369596915046}
   m_Layer: 0
@@ -237,18 +238,22 @@ MonoBehaviour:
   navline: {fileID: 0}
   pathStatus: {fileID: 0}
   pathLength: {fileID: 0}
+  hurtEffect: {fileID: 2480862112589574106, guid: e53ce1e82e9e8f343a9db301e2b1f35b, type: 3}
   team: 1
   maxHealth: 20
   health: 20
-  moveSpeed: 5
+  moveSpeed: 15
   moveSpeedRemaining: 20
   actionsPerTurn: 1
   actionsRemaining: 1
   defaultAction: {fileID: 5864908047763864400}
   jumpAction: {fileID: 1147438904190617184}
-  actions: []
+  actions:
+  - {fileID: 8853742654304471669}
+  - {fileID: 1147438904190617184}
   rangeRing: {fileID: 8496270818375162803}
   rangeRingVerticalOffset: 0.1
+  pathDistance: 0
 --- !u!114 &5864908047763864400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +310,35 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   maxHorizontalJumpDistance: 5
+--- !u!114 &8853742654304471669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b396c4ef49c3a5b4281fbf0e0d424d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicAttackAction
+  actionSprite: {fileID: 21300000, guid: 03b6d856a88dfea41b99dc85dcbe7c3c, type: 3}
+  actionName: Bite
+  actionDescription: Deal 1 - 6 damage to a target.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 5
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  hitEffect: {fileID: 7757779262279891833, guid: 249f96efb231ab44bb7d94c394356e89, type: 3}
+  damage: {x: 1, y: 6}
 --- !u!195 &7971099840781119082
 NavMeshAgent:
   m_ObjectHideFlags: 0
