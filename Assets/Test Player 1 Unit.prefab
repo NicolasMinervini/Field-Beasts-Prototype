@@ -233,6 +233,7 @@ MonoBehaviour:
   agent: {fileID: 7971099840781119082}
   moveTarget: {x: 0, y: 0, z: 0}
   unitPointer: {fileID: 0}
+  teamManager: {fileID: 0}
   navline: {fileID: 0}
   pathStatus: {fileID: 0}
   pathLength: {fileID: 0}
@@ -260,9 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7066041f61707b4eb2c53ab8a6da2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultMoveAction
-  actionSprite: {fileID: 0}
+  actionSprite: {fileID: 21300000, guid: d928c4dfbb7ca01469cd8bd48a783fa1, type: 3}
   actionName: Move
-  actionDescription: 
+  actionDescription: Spend movement to walk to a targeted position.
   targetType: 0
   unit: {fileID: 1803043873452243477}
   range: 5
@@ -270,6 +271,7 @@ MonoBehaviour:
   heightAdvantageRangeBuff: 0
   rangeChangePerUnitHeight: 1
   navLinePositions: []
+  isMouseOverUI: 0
   raycastDistance: 999
   rayHitLayers:
     serializedVersion: 2
@@ -286,9 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a3e84d932c7ba42a98d429787dcd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumpAction
-  actionSprite: {fileID: 0}
+  actionSprite: {fileID: 21300000, guid: 2f0a66c2880ed5d438b5c5027695ccbc, type: 3}
   actionName: Jump
-  actionDescription: 
+  actionDescription: Leap up onto raised platforms or back down to the ground. Additional
+    movement cost for jumping to higher ground.
   targetType: 0
   unit: {fileID: 1803043873452243477}
   range: 5
@@ -296,6 +299,7 @@ MonoBehaviour:
   heightAdvantageRangeBuff: 0
   rangeChangePerUnitHeight: 1
   navLinePositions: []
+  isMouseOverUI: 0
   raycastDistance: 999
   rayHitLayers:
     serializedVersion: 2

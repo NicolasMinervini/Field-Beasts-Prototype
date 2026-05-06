@@ -139,4 +139,36 @@ public class TurnManager : MonoBehaviour
             }
         }
     }
+
+
+
+
+    public void DefaultActionButton()
+    {
+        if(teams[currentTurn].teamPointer != null)
+        {
+            teams[currentTurn].teamPointer.SelectDefaultAction();
+        }
+    }
+    public void JumpActionButton()
+    {
+        if (teams[currentTurn].teamPointer != null)
+        {
+            teams[currentTurn].teamPointer.SelectJumpAction();
+        }
+    }
+    public void Action1Button()
+    {
+        if (teams[currentTurn].teamPointer != null)
+        {
+            teams[currentTurn].teamPointer.SelectFirstAction();
+        }
+    }
+    public void Action2Button()
+    {
+        if (teams[currentTurn].teamPointer != null)
+        {
+            teams[currentTurn].teamPointer.SelectSecondAction();
+        }
+    }
 }

@@ -33,6 +33,8 @@ public class Unit : MonoBehaviour
     public int actionsPerTurn = 1;
     public int actionsRemaining = 1;
     public Action defaultAction, jumpAction;
+
+    //*********** NOTE: currently the game assumes units always have exactly two actions in this array! Check the UI stuff in Pointer and TurnManager
     public Action[] actions;
 
     public GameObject rangeRing;

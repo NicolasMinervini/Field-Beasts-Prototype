@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Pointer : Player
 {
@@ -24,7 +25,9 @@ public class Pointer : Player
 
     public bool movementKeyboardShortcuts = true;
 
-    public TMP_Text debugSelectedAbilityName, debugSelectedUnit;
+    public TMP_Text debugSelectedAbilityName, debugSelectedUnit, healthText, moveText, actionsText;
+    public Image defaultActionButton, jumpButton, actionButton1, actionButton2;
+    public Slider healthBar, moveBar;
 
     bool isMouseOverUI = false;
 
@@ -187,12 +190,12 @@ public class Pointer : Player
         if (Keyboard.current.zKey.wasPressedThisFrame)
         {
             //shortcut to default (movement) action
-            selectedAction = selectedUnit.defaultAction;
+            SelectDefaultAction();
         }
         else if (Keyboard.current.xKey.wasPressedThisFrame)
         {
             //shortcut to jump action
-            selectedAction = selectedUnit.jumpAction;
+            SelectJumpAction();
         }
     }
 
@@ -220,6 +223,97 @@ public class Pointer : Player
         else
         {
             debugSelectedUnit.text = "Selected Unit: " + selectedUnit.name;
+        }
+
+        UpdateActionUI();
+        UpdateBars();
+    }
+
+
+
+    //************************************************************ Stupid UI stuff beyond this point!!! *********************************************************************
+
+
+
+    public void SelectDefaultAction()
+    {
+        if (selectedUnit == null || !isYourTurn) return;
+
+        selectedAction = selectedUnit.defaultAction;
+    }
+    public void SelectJumpAction()
+    {
+        if (selectedUnit == null || !isYourTurn) return;
+
+        selectedAction = selectedUnit.jumpAction;
+    }
+    public void SelectFirstAction()
+    {
+        if (selectedUnit == null || !isYourTurn) return;
+
+        selectedAction = selectedUnit.actions[0];
+    }
+    public void SelectSecondAction()
+    {
+        if (selectedUnit == null || !isYourTurn) return;
+
+        selectedAction = selectedUnit.actions[1];
+    }
+
+    //show the proper action icons for each action button
+    public void UpdateActionUI()
+    {
+        if (selectedUnit != null)
+        {
+            defaultActionButton.gameObject.SetActive(true);
+            jumpButton.gameObject.SetActive(true);
+            actionButton1.gameObject.SetActive(true);
+            actionButton2.gameObject.SetActive(true);
+
+            defaultActionButton.sprite = selectedUnit.defaultAction.actionSprite;
+            jumpButton.sprite = selectedUnit.jumpAction.actionSprite;
+            actionButton1.sprite = selectedUnit.actions[0].actionSprite;
+            actionButton2.sprite = selectedUnit.actions[1].actionSprite;
+        }
+        else
+        {
+            defaultActionButton.gameObject.SetActive(false);
+            jumpButton.gameObject.SetActive(false);
+            actionButton1.gameObject.SetActive(false);
+            actionButton2.gameObject.SetActive(false);
+        }
+    }
+
+    //display the currently selected unit's health and remaining movement
+    public void UpdateBars()
+    {
+        if(selectedUnit != null)
+        {
+            healthText.gameObject.SetActive(true);
+            moveText.gameObject.SetActive(true);
+            healthBar.gameObject.SetActive(true);
+            moveBar.gameObject.SetActive(true);
+            actionsText.gameObject.SetActive(true);
+
+            actionsText.text = "Actions remaining: " + selectedUnit.actionsRemaining;
+
+            healthBar.minValue = 0;
+            healthBar.maxValue = selectedUnit.maxHealth;
+            healthBar.value = selectedUnit.health;
+            healthText.text = "Health: " + selectedUnit.health + " / " + selectedUnit.maxHealth;
+
+            moveBar.minValue = 0;
+            moveBar.maxValue = selectedUnit.moveSpeed;
+            moveBar.value = selectedUnit.moveSpeedRemaining;
+            healthText.text = "Move: " + selectedUnit.moveSpeedRemaining + " / " + selectedUnit.moveSpeed;
+        }
+        else
+        {
+            healthText.gameObject.SetActive(false);
+            moveText.gameObject.SetActive(false);
+            healthBar.gameObject.SetActive(false);
+            moveBar.gameObject.SetActive(false);
+            actionsText.gameObject.SetActive(false);
         }
     }
 }

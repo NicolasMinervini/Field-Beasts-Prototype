@@ -109,10 +109,12 @@ public class Action : MonoBehaviour
 
         if (IsInRange(targetPosition))
         {
+            unit.navline.startColor = Color.white;
             unit.navline.endColor = Color.white;
         }
         else
         {
+            unit.navline.startColor = Color.red;
             unit.navline.endColor = Color.red;
         }
     }
