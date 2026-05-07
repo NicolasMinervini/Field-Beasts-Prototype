@@ -1,3 +1,7 @@
+# Field Beasts Digital Demo
+
+Playable at [https://nlm25.itch.io/field-beasts-demo](https://nlm25.itch.io/field-beasts-demo)
+
 # Changelog
 
 ## Between Testing and Final Physical Prototype
