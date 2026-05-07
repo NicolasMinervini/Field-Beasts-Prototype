@@ -1,0 +1,640 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1757215472044102257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3449443417896333955}
+  - component: {fileID: 3709255874634559828}
+  - component: {fileID: 2057469646261035398}
+  m_Layer: 0
+  m_Name: Capsule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3449443417896333955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757215472044102257}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5535289396251810501}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3709255874634559828
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757215472044102257}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2057469646261035398
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757215472044102257}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 58938f60467a8b542855f5cd69dbfa03, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5432481005419585325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4226465421316213385}
+  - component: {fileID: 462958289862859723}
+  - component: {fileID: 2044875759443347628}
+  m_Layer: 0
+  m_Name: Quad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4226465421316213385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432481005419585325}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4392412598360205429}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &462958289862859723
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432481005419585325}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2044875759443347628
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432481005419585325}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b1e0ab0e535e44e4da680b5cc3fb8430, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8427274522890924284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5535289396251810501}
+  - component: {fileID: 1803043873452243477}
+  - component: {fileID: 5864908047763864400}
+  - component: {fileID: 1147438904190617184}
+  - component: {fileID: 8853742654304471669}
+  - component: {fileID: 1460571244022073585}
+  - component: {fileID: 3655334609452632281}
+  - component: {fileID: 7441692070984196972}
+  - component: {fileID: 5227427355883969828}
+  - component: {fileID: 7958455285539168395}
+  - component: {fileID: 7971099840781119082}
+  - component: {fileID: 7333525369596915046}
+  m_Layer: 0
+  m_Name: P1 Rabbit
+  m_TagString: Unit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5535289396251810501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3449443417896333955}
+  - {fileID: 4392412598360205429}
+  - {fileID: 747965511639341540}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1803043873452243477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed96997adb103240813018c540bb9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  agent: {fileID: 7971099840781119082}
+  moveTarget: {x: 0, y: 0, z: 0}
+  unitPointer: {fileID: 0}
+  teamManager: {fileID: 0}
+  navline: {fileID: 0}
+  pathStatus: {fileID: 0}
+  pathLength: {fileID: 0}
+  hurtEffect: {fileID: 2480862112589574106, guid: e53ce1e82e9e8f343a9db301e2b1f35b, type: 3}
+  team: 1
+  maxHealth: 10
+  health: 10
+  moveSpeed: 25
+  moveSpeedRemaining: 20
+  actionsPerTurn: 1
+  actionsRemaining: 1
+  defaultAction: {fileID: 5864908047763864400}
+  jumpAction: {fileID: 1147438904190617184}
+  actions:
+  - {fileID: 1460571244022073585}
+  - {fileID: 8853742654304471669}
+  rangeRing: {fileID: 8496270818375162803}
+  rangeRingVerticalOffset: 0.1
+  pathDistance: 0
+--- !u!114 &5864908047763864400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7066041f61707b4eb2c53ab8a6da2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultMoveAction
+  actionSprite: {fileID: 21300000, guid: d928c4dfbb7ca01469cd8bd48a783fa1, type: 3}
+  actionName: Move
+  actionDescription: Spend movement to walk to a targeted position.
+  targetType: 0
+  unit: {fileID: 1803043873452243477}
+  range: 5
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 0
+  rangeChangePerUnitHeight: 1
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!114 &1147438904190617184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a3e84d932c7ba42a98d429787dcd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpAction
+  actionSprite: {fileID: 21300000, guid: 2f0a66c2880ed5d438b5c5027695ccbc, type: 3}
+  actionName: Jump
+  actionDescription: Leap up onto raised platforms or back down to the ground. Additional
+    movement cost for jumping to higher ground.
+  targetType: 0
+  unit: {fileID: 1803043873452243477}
+  range: 7
+  heightDisadvantageRangeDebuff: 1
+  heightAdvantageRangeBuff: 0
+  rangeChangePerUnitHeight: 0.7
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  maxHorizontalJumpDistance: 7
+  flatAdditionalMovementCost: 0.5
+--- !u!114 &8853742654304471669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b396c4ef49c3a5b4281fbf0e0d424d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicAttackAction
+  actionSprite: {fileID: 21300000, guid: 03b6d856a88dfea41b99dc85dcbe7c3c, type: 3}
+  actionName: Bite
+  actionDescription: Deal 1 - 4 damage to a target.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 4
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  hitEffect: {fileID: 7757779262279891833, guid: 249f96efb231ab44bb7d94c394356e89, type: 3}
+  damage: {x: 1, y: 4}
+--- !u!114 &1460571244022073585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75aa4dc4d0b8bb4a93103b3263d2469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealAction
+  actionSprite: {fileID: 21300000, guid: 24cf14cca019f1942a0badf688ca3f5a, type: 3}
+  actionName: Heal
+  actionDescription: Restore a target's health by a small amount.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 5
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  healEffect: {fileID: 212326706009544113, guid: b46ecc90441d83644b106617f9ce7a33, type: 3}
+  healAmount: {x: 2, y: 4}
+--- !u!114 &3655334609452632281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3712984e2440a40885dfe3c8e53c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicStatusAction
+  actionSprite: {fileID: 21300000, guid: c8d79622eaabb3b46b91fd5d23b82eb1, type: 3}
+  actionName: War Cry
+  actionDescription: Grant a target an extra action on their current or next turn.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 10
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  useEffect: {fileID: 1351423235528268496, guid: 08e88c046eb7dcd49aad047231914b9a, type: 3}
+  actionAddition: 1
+  movementModifier: 1
+--- !u!114 &7441692070984196972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3712984e2440a40885dfe3c8e53c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicStatusAction
+  actionSprite: {fileID: 21300000, guid: b0df992b93e74664b9cd5bc6e0905f0f, type: 3}
+  actionName: Rush
+  actionDescription: Double a target's movement speed on their current or next turn.
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 3
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  useEffect: {fileID: 1351423235528268496, guid: 08e88c046eb7dcd49aad047231914b9a, type: 3}
+  actionAddition: 0
+  movementModifier: 2
+--- !u!114 &5227427355883969828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3712984e2440a40885dfe3c8e53c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicStatusAction
+  actionSprite: {fileID: 21300000, guid: 7c024224163fff444956e788a5b42cca, type: 3}
+  actionName: Mud Sling
+  actionDescription: Halve a target's movement speed on their current or next turn
+  targetType: 1
+  unit: {fileID: 1803043873452243477}
+  range: 10
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 1
+  rangeChangePerUnitHeight: 1.5
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  useEffect: {fileID: 6511364156482765953, guid: a503a0ad57552fb4eb8b7fa853f77c12, type: 3}
+  actionAddition: 0
+  movementModifier: 0.5
+--- !u!114 &7958455285539168395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a3e84d932c7ba42a98d429787dcd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpAction
+  actionSprite: {fileID: 21300000, guid: de421679343de494a88fe1a8c7620200, type: 3}
+  actionName: Fly
+  actionDescription: Leap up onto raised platforms, ignoring height-based additional
+    movement costs.
+  targetType: 0
+  unit: {fileID: 1803043873452243477}
+  range: 5
+  heightDisadvantageRangeDebuff: 0
+  heightAdvantageRangeBuff: 0
+  rangeChangePerUnitHeight: 1
+  navLinePositions: []
+  isMouseOverUI: 0
+  raycastDistance: 999
+  rayHitLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  maxHorizontalJumpDistance: 5
+  flatAdditionalMovementCost: 0
+--- !u!195 &7971099840781119082
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &7333525369596915046
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427274522890924284}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &8496270818375162803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4392412598360205429}
+  m_Layer: 0
+  m_Name: Range Circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4392412598360205429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496270818375162803}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4226465421316213385}
+  m_Father: {fileID: 5535289396251810501}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &393723627278877631
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5535289396251810501}
+    m_Modifications:
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263805009166846059, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: unit
+      value: 
+      objectReference: {fileID: 1803043873452243477}
+    - target: {fileID: 5636707292776229813, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+      propertyPath: m_Name
+      value: Overhead Health Display
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+--- !u!4 &747965511639341540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1087486432548969051, guid: 7ceee9a394f88ec43b7de768771c57da, type: 3}
+  m_PrefabInstance: {fileID: 393723627278877631}
+  m_PrefabAsset: {fileID: 0}

@@ -25,7 +25,7 @@ public class Pointer : Player
 
     public bool movementKeyboardShortcuts = true;
 
-    public TMP_Text debugSelectedAbilityName, debugSelectedUnit, healthText, moveText, actionsText;
+    public TMP_Text debugSelectedAbilityName, debugSelectedUnit, healthText, moveText, actionsText, actionDescriptionText;
     public Image defaultActionButton, jumpButton, actionButton1, actionButton2;
     public Slider healthBar, moveBar;
 
@@ -284,6 +284,19 @@ public class Pointer : Player
             jumpButton.sprite = selectedUnit.jumpAction.actionSprite;
             actionButton1.sprite = selectedUnit.actions[0].actionSprite;
             actionButton2.sprite = selectedUnit.actions[1].actionSprite;
+
+            if(actionDescriptionText != null)
+            {
+                if (selectedAction != null)
+                {
+                    actionDescriptionText.gameObject.SetActive(true);
+                    actionDescriptionText.text = selectedAction.actionDescription;
+                }
+                else
+                {
+                    actionDescriptionText.gameObject.SetActive(false);
+                }
+            }
         }
         else
         {
@@ -291,6 +304,8 @@ public class Pointer : Player
             jumpButton.gameObject.SetActive(false);
             actionButton1.gameObject.SetActive(false);
             actionButton2.gameObject.SetActive(false);
+
+            if(actionDescriptionText != null) actionDescriptionText.gameObject.SetActive(false);
         }
     }
 

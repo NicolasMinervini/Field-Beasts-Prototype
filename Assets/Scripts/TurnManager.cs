@@ -10,12 +10,14 @@ public class TurnManager : MonoBehaviour
     public TMP_Text pathStatus;
     public TMP_Text pathLength;
 
-    public TMP_Text currentTurnText;
+    public TMP_Text currentTurnText, gameResultsText;
     public int currentTurn = 0;
 
     public TeamManager[] teams;
 
     bool gameComplete = false;
+
+    public PauseMenuButtons menuManager;
 
     void Start()
     {
@@ -122,26 +124,36 @@ public class TurnManager : MonoBehaviour
         {
             //display the winning team's victory
 
-            if (currentTurnText != null)
+            if (gameResultsText != null)
             {
-                currentTurnText.text = winner.teamName + " has won!";
-                currentTurnText.color = teams[currentTurn].teamColor;
+                gameResultsText.text = winner.teamName + " has won!";
+                gameResultsText.color = teams[currentTurn].teamColor;
             }
         }
         else
         {
             //draw, everyone loses
 
-            if (currentTurnText != null)
+            if (gameResultsText != null)
             {
-                currentTurnText.text = "Draw, everyone loses!";
-                currentTurnText.color = Color.white;
+                gameResultsText.text = "Draw, everyone loses!";
+                gameResultsText.color = Color.white;
             }
+        }
+
+        if(menuManager != null)
+        {
+            menuManager.GameEnd();
         }
     }
 
-
-
+    public void PauseDeselect()
+    {
+        if(teams[currentTurn].teamPointer != null)
+        {
+            teams[currentTurn].teamPointer.DeselectUnit();
+        }
+    }
 
     public void DefaultActionButton()
     {
